@@ -1,0 +1,35 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+/*
+Functionality
+Only contract owner should be able to mint tokens
+Any user can transfer tokens
+Any user can burn tokens
+*/
+
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.0.0/contracts/token/ERC20/ERC20.sol";
+
+contract RVC is ERC20 {
+    address public owner;
+
+    constructor(uint256 initialSupply) ERC20("revcoin", "RVC") {
+        _mint(msg.sender, initialSupply * 10 ** uint(decimals()));
+        owner = msg.sender;
+    }
+
+    function mint(address to, uint256 amount) public {
+        require(msg.sender == owner, "Only the contract owner can mint tokens");
+        _mint(to, amount);
+    }
+
+    function burn(uint256 amount) public {
+        require(balanceOf(msg.sender) >= amount, "Insufficient balance for burning");
+        _burn(msg.sender, amount);
+    }
+
+    function transferRev(address to, uint256 amount) public {
+        require(balanceOf(msg.sender) >= amount, "Insufficient balance for Transfer");
+        transfer(to, amount);
+} 
+}
