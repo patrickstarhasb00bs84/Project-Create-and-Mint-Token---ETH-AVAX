@@ -14,7 +14,7 @@ To deploy and interact with the RVC token contract, follow these steps using the
    - Ensure the Solidity compiler version is set to 0.8.0 or higher.
 
 2. **Import OpenZeppelin Contracts:**
-   - In the Remix sidebar, create a new file named `RVC.sol`.
+   - In the Remix sidebar, create a new file named `m3.sol`.
    - Copy and paste the entire code from `RVC.sol` provided in this repository.
 
 3. **Compile the Contract:**
